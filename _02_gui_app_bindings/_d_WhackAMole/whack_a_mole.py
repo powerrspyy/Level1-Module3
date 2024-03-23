@@ -14,19 +14,32 @@ class Whack(tk.Tk):
         button_width, button_height = self.setup_buttons(num_buttons, columns_per_row)
 
         # TODO: Create a member variable for the list of buttons
+        self.buttons = list()
+
 
         # TODO: Create a member variable for the random mole button and
         #  initialize it to None
-
+        self.randwhack = None
         # TODO: Use a loop to create enough buttons to fill the window.
         #  Use the 'columns_per_row', 'button_width', 'button_height' variables
         #  when calling button.place() to put each button in the correct
         #  position
         for i in range(num_buttons):
-            row_num = int(i / columns_per_row)
-            col_num = int(i % columns_per_row)
-            row_y = row_num * button_height
-            col_x = col_num * button_width
+            print(i)
+            row_num = int(i / columns_per_row) #0
+            col_num = int(i % columns_per_row) #1
+            print(button_height, button_width)
+            row_y = row_num * button_height #0
+            col_x = col_num * button_width #
+            print("row_num", row_num)
+            print("col_num", col_num)
+            print("row_y", row_y)
+            print("col_x", col_x)
+            button = tk.Button(self, text = "None", fg = "black", bg = "yellow", font=('courier new', 11, 'bold'), command = self.on_button_press)
+            button.place(x = col_x, y = row_y, height = button_height, width = button_width)
+            self.buttons.append(button)
+            # self.buttons[i].place(x = col_x, y = row_y, height = button_height, width = button_width)
+
 
             # TODO: Call the button's bind() method to call the on_button_press()
             #  method when a mouse button is pressed
